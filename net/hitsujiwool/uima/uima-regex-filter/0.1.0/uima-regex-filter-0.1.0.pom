@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.hitsujiwool.uima</groupId>
-  <artifactId>uima-igo</artifactId>
+  <artifactId>uima-regex-filter</artifactId>
   <version>0.1.0</version>
   <licenses>
     <license>
@@ -23,38 +21,7 @@
     </repository>
   </distributionManagement>
   <build>
-    <resources>
-      <resource>
-        <directory>${project.basedir}/resources</directory>
-      </resource>
-    </resources>
-    <testResources>
-      <testResource>
-        <directory>${project.basedir}/resources</directory>
-      </testResource>
-    </testResources>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>2.1</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-             <createDependencyReducedPom>false</createDependencyReducedPom>         
-              <artifactSet>
-                <includes>
-                  <include>net.reduls</include>
-                </includes>
-              </artifactSet>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -69,7 +36,7 @@
         <artifactId>site-maven-plugin</artifactId>
         <version>0.9</version>
         <configuration>
-          <message>Maven artifacts for ${project.version}</message>
+          <message>Maven artifacts for uima-regex-filter ${project.version}</message>
           <noJekyll>true</noJekyll>
           <outputDirectory>${project.build.directory}/maven-repo</outputDirectory>
           <branch>refs/heads/master</branch>
@@ -93,6 +60,11 @@
   <dependencies>
     <dependency>
       <groupId>org.apache.uima</groupId>
+      <artifactId>uimaj-core</artifactId>
+      <version>2.4.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.uima</groupId>
       <artifactId>uimafit-core</artifactId>
       <version>2.0.0</version>
       <scope>test</scope>
@@ -102,17 +74,6 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>net.reduls</groupId>
-      <artifactId>igo</artifactId>
-      <version>0.4.5</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.uima</groupId>
-      <artifactId>uimaj-core</artifactId>
-      <version>2.4.0</version>
-      <scope>provided</scope>
     </dependency>
   </dependencies>
 </project>
